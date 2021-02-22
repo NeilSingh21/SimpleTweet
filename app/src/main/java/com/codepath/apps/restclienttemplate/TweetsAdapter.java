@@ -1,9 +1,11 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,13 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+
+import org.json.JSONException;
 
 import java.util.List;
+
+import okhttp3.Headers;
 
 public class TweetsAdapter extends  RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
 
     Context context;
     List<Tweet> tweets;
+    //TwitterClient client;
 
     public TweetsAdapter(Context context, List<Tweet> tweets) {
         this.context = context;
@@ -62,14 +70,41 @@ public class TweetsAdapter extends  RecyclerView.Adapter<TweetsAdapter.ViewHolde
         TextView tvScreenName;
         TextView tvName;
         TextView tvCreatedAt;
+        Button btnRetweet;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+           // client = TwitterApp.getRestClient(this);
+
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvName = itemView.findViewById(R.id.tvName);
             tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
+            //btnRetweet = itemView.findViewById(R.id.btnRetweet);
+
+          /*  btnRetweet.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int I = btnRetweet.getId();
+                    client.reTweet(I, new JsonHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Headers headers, JSON json) {
+                            try {
+                                Tweet.fromJson(json.jsonObject);
+                                Log.i("TweetsAdapter", "Retweeting");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+
+                        }
+                    });
+                }
+            });*/
         }
 
         public void bind(Tweet tweet) {

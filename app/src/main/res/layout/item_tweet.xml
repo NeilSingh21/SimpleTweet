@@ -38,7 +38,9 @@
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:textSize="13sp"
-        tools:text="this is my tweet" />
+        tools:text="this is my tweet"
+        android:autoLink="all"
+        android:linksClickable="true"/>
 
     <TextView
         android:id="@+id/tvName"
@@ -63,4 +65,14 @@
         android:layout_toEndOf="@+id/tvScreenName"
         android:textSize="14sp"
         tools:text="x hours" />
+
+    <!--<Button
+        android:id="@+id/btnRetweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="0dp"
+        android:text="Retweet" />-->
 </RelativeLayout>
